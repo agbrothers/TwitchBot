@@ -195,36 +195,12 @@ class TwitchBot(WebBot):
         
 if __name__ == '__main__':
         
-    un = 'gaymingming'
-    pw = 'manbearpiggayfishfrog'
-    email = 'greysonbrothers@gmail.com'
+    un = 'username'
+    pw = 'password'
+    email = 'email@gmail.com'
     channels = ['Mizkif','hJune','ludwig','KristoferYee','Myth','SwaggerSouls']
     t = 0.25
     
     bot = TwitchBot(un, pw, email, channels, t)
-    
-    
-    # driver.find_element_by_tag_name('body').send_keys(Keys.COMMAND + 't') 
-    # driver.find_element_by_tag_name('body').send_keys(Keys.COMMAND + 'w') 
-    # ActionChains(driver).key_down(Keys.COMMAND).send_keys("t").key_up(Keys.COMMAND).perform()
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     
