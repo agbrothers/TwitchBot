@@ -103,19 +103,22 @@ class TwitchBot(WebBot):
             pw_element = self.driver.find_element_by_xpath('//input[@id="password-input"]')
             pw_element.send_keys(pw) 
             time.sleep(0.75)
-            pw_element.send_keys(Keys.ENTER)    
+            pw_element.send_keys(Keys.ENTER)
+                
+
+            # Get the One Time Password from the given gmail account to login
+            try:
+                time.sleep(20)
+                one_time_passcode = otp.get_twitch('greysonbrothers@gmail.com')
+                # one_time_passcode = input(f'Please enter the one-time-passcode sent to {self.un}')
+                input_elements = self.driver.find_elements_by_xpath('//input[@type="text"]')
+                for i,num in enumerate(one_time_passcode):
+                    input_elements[i].send_keys(num)
+                    time.sleep(0.5)
+                time.sleep(3)
+            except Exception:
+                return
             
-            # Wait for and get the One Time Passcode sent to the gmail account linked to twitch
-            time.sleep(30)
-            one_time_passcode = otp.get_twitch('greysonbrothers@gmail.com')
-            print('Passcode Acquired')
-            input_elements = self.driver.find_elements_by_xpath('//input[@type="text"]')
-            for i,num in enumerate(one_time_passcode):
-                input_elements[i].send_keys(num)
-                time.sleep(0.5)
-            time.sleep(3)
-            return
-        
         except Exception:
             sys.exit(f'Error: There was an issue logging in to {self.login_url}.  Please check the credentials provided and retry.')
                 
